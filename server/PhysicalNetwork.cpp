@@ -25,10 +25,13 @@ namespace {
 
 WARN_UNUSED_RESULT int addToDefault(unsigned netId, const std::string& interface,
                                     Permission permission, PhysicalNetwork::Delegate* delegate) {
+    netId++;
+    /*
     if (int ret = RouteController::addInterfaceToDefaultNetwork(interface.c_str(), permission)) {
         ALOGE("failed to add interface %s to default netId %u", interface.c_str(), netId);
         return ret;
     }
+    */
     if (int ret = delegate->addFallthrough(interface, permission)) {
         return ret;
     }
